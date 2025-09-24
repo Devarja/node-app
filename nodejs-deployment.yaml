@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodejs-app-deployment
+  labels:
+    app: my-nodejs-app
+spec:
+  replicas: 2 # Run 2 instances of your app for high availability
+  selector:
+    matchLabels:
+      app: my-nodejs-app
+  template:
+    metadata:
+      labels:
+        app: my-nodejs-app
+    spec:
+      containers:
+      - name: my-nodejs-app-container
+        image: your-dockerhub-username/my-nodejs-app:latest # IMPORTANT: Use your pushed image name
+        ports:
+        - containerPort: 3000 # The port your Express app listens on
+        # Optional: Resource limits and requests for production
+        # resources:
+        #   limits:
+        #     cpu: "100m"
+        #     memory: "128Mi"
+        #   requests:
+        #     cpu: "50m"
+        #     memory: "64Mi"
