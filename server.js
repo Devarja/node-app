@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
   res.send(`Hello from Node.js App! Served by: ${os.hostname()}\n`);
 });
 
-app.listen(port, () => {
+app.listen(port,'0.0.0.0',() => {
   console.log(`Node.js app listening at http://localhost:${port}`);
 });
